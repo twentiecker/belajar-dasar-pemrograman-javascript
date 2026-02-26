@@ -19,9 +19,9 @@ function addOrder(customerName, items) {
 
 // TODO: selesaikan fungsi updateOrderStatus
 function updateOrderStatus(orderId, status) {
-  const order = orders.find((order) => order.id === orderId);
+  const order = orders.filter((order) => order.id === orderId);
   if (order) {
-    order.status = status;
+    order.map((item) => (item.status = status));
   }
 }
 
@@ -29,9 +29,9 @@ function updateOrderStatus(orderId, status) {
 function calculateTotalRevenue() {
   const completedOrder = orders.filter((order) => order.status === "Selesai");
   if (completedOrder) {
-    return completedOrder.reduce((sum, item) => sum + item.totalPrice, 0);
-  } else {
-    return 0;
+    return completedOrder.reduce((acc, order) => {
+      return acc + order.totalPrice;
+    }, 0);
   }
 }
 

@@ -18,7 +18,7 @@ class Inventory {
 
   removeItem(id) {
     const itemId = this.items.findIndex((item) => item.id === id);
-    if (itemId != -1) {
+    if (itemId !== -1) {
       this.items.splice(itemId, 1);
     }
   }
